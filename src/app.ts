@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 
 const app = express()
@@ -17,4 +17,7 @@ import propertyRouter from './routes/property.route'
 app.use('/api/v1/users/', userRoute)
 app.use('/api/v1/properties/', propertyRouter)
 
+app.use((err:Error , req:Request , res:Response , next:NextFunction)=>{
+    console.log(err, "This is custome error")
+})
 export default app;
