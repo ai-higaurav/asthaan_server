@@ -1,6 +1,7 @@
 import mongoose,{Document , Schema} from 'mongoose'
 
 interface IUser extends Document{
+    userId:string
     name:string
     email:string
     password:string
@@ -9,6 +10,11 @@ interface IUser extends Document{
     phoneVerification:boolean
 }
 const userSchema:Schema<IUser> = new mongoose.Schema({
+    userId:{
+        type:String,
+        required:true,
+        unique:true
+    },
     name:{
         type:String,
         required:true,
