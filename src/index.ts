@@ -6,13 +6,17 @@ dotenv.config({
     path:"./.env"
 })
 
+
+const PORT = process.env.PORT || 5000
+
 connectToDb()
+
 .then(()=>{
-    const PORT = process.env.PORT || 5000
     app.listen(PORT,()=>{
         console.log("Server Status: OK", PORT)
     })
 })
 .catch((err)=>{
-    console.log(err)
+    console.error(`Error starting server: ${err.message}`);
+    console.error(err.stack);
 })
