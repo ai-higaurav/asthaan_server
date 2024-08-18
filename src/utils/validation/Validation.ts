@@ -255,3 +255,12 @@ export const propertyVal = z.object({
 
 })
 
+export const images = z.array(
+    z.string(),
+    {
+        required_error: 'Images are required',
+        invalid_type_error: "Images must be an array of strings"
+    }
+)
+.min(1,"At lest one image is required")
+.max(5, "Maximum 5 images are allowed")

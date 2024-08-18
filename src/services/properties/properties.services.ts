@@ -18,3 +18,9 @@ export const getLimit = async(sellerId:string)=>{
 
     return {listedProperties,userLimit}
 }
+
+
+export const updateImages = async(propertyId:string , payload:string[]=[])=>{
+        const response = await Property.findByIdAndUpdate(propertyId,{images:payload},{new:true})
+        return response;
+}
