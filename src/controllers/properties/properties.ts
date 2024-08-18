@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 
 import ApiResponse from "../../utils/ApiResponse"
-import { getLimit, getListed, updateImages } from "../../services/properties/properties.services"
+import { getLimit, getListed, getPropertyList, updateImages } from "../../services/properties/properties.services"
 import { images, propertyVal } from "../../utils/validation/Validation"
 
 
@@ -31,3 +31,11 @@ export const handleImages =async(req:Request , res:Response, next:NextFunction )
         return ApiResponse.success([],"Images has been updated", 200).send(res)
     }
 }
+
+export const handlePropertyList =async(req:Request , res:Response, next:NextFunction )=>{
+    const response = await getPropertyList()
+    if(response){
+        return ApiResponse.success(response, 'Property list fetch successfully',200).send(res)
+    }
+}
+

@@ -24,3 +24,9 @@ export const updateImages = async(propertyId:string , payload:string[]=[])=>{
         const response = await Property.findByIdAndUpdate(propertyId,{images:payload},{new:true})
         return response;
 }
+
+
+export const getPropertyList = async()=>{
+    const response = await Property.find({})
+    return response;
+}
