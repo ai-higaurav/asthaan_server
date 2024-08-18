@@ -22,6 +22,10 @@ class ApiResponse {
         return new ApiResponse(data, message, statusCode)
     }
 
+    static rateLimit(data: any[] = [], message: string = '', statusCode: number = 429){
+        return new ApiResponse(data,message,statusCode)
+    }
+
     send(res:Response){
         return res.status(this.statusCode).json(this)
     }

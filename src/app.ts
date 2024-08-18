@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import { ZodError } from 'zod'
 import ApiResponse from './utils/ApiResponse'
+import rateLimit from 'express-rate-limit'
 
 const app = express()
 
@@ -12,6 +13,13 @@ app.use(cors({
     credentials:true
 }))
 app.use(express.json())
+app.use(rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message:()=>{
+        return ApiResponse.rateLimit([],"Maximum request threshold limit reached. Please wait before trying again.",429)
+    }
+}))
 
 import userRoute from './routes/user.routes'
 import propertyRouter from './routes/property.routes'
