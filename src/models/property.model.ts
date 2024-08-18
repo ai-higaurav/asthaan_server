@@ -17,7 +17,7 @@ export interface IProperty extends Document {
     balconyType: 'open' | 'covered' | 'none';
     amenities: string[];
     waterSource: 'municipal corporation' | 'borewell' | 'tank';
-    facingDirection: string[];
+    facingDirection: string;
     additionalDetails: string;
     images: string[];
     status: 'active' | 'sold';
@@ -103,7 +103,7 @@ const propertySchema: Schema<IProperty> = new mongoose.Schema({
         required: true
     },
     facingDirection: {
-        type: [String],
+        type: String,
         required: true
     },
     additionalDetails: {

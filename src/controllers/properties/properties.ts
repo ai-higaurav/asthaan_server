@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express"
 
 import ApiResponse from "../../utils/ApiResponse"
-import { getLimit, getListed, getPropertyList, updateImages } from "../../services/properties/properties.services"
+import { getLimit, getListed, getPropertyList, updateImages, updateProperty } from "../../services/properties/properties.services"
 import { images, propertyVal } from "../../utils/validation/Validation"
-
 
 export const handleList =async(req:Request , res:Response, next:NextFunction )=>{
 
@@ -38,4 +37,14 @@ export const handlePropertyList =async(req:Request , res:Response, next:NextFunc
         return ApiResponse.success(response, 'Property list fetch successfully',200).send(res)
     }
 }
+
+export const handleUpdateProperty =async(req:Request , res:Response, next:NextFunction )=>{
+    const payload = propertyVal.parse(req.body)
+    const response = await updateProperty(req.body._id, payload)
+
+    if(response){
+        return ApiResponse.success([response],"Property has been updated successfully", 200).send(res)
+    }
+}
+
 

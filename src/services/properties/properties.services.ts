@@ -30,3 +30,8 @@ export const getPropertyList = async()=>{
     const response = await Property.find({})
     return response;
 }
+
+export const updateProperty = async(propertyId:string, payload:{})=>{
+    const response = await Property.findByIdAndUpdate(propertyId,payload)
+    return response;
+}

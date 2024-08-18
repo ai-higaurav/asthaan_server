@@ -180,7 +180,10 @@ export const propertyVal = z.object({
             .transform(val => val.toLocaleLowerCase())
             .refine(val => amenitiesEnum.includes(val), {
                 message: "Each amenity must be one of the following: 'swimming pool', 'gym', 'park', 'security', 'playground', 'club house'"
-            })),
+            }))
+            .refine((arr) => arr.every((item) => typeof item === 'string' && item !== ''), {
+                message: "Invalid amenities array. Please provide a valid array of strings."
+            }),
 
     waterSource: z
         .string({
