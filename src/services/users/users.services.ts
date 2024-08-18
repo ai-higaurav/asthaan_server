@@ -17,6 +17,8 @@ export const updateUser = async(model:Model<IUser>, userId:string, payload:{}={}
     return response;
 }
 
+
+
 export const getUserToken = async()=>{
 
 }

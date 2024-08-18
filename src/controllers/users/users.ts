@@ -1,14 +1,14 @@
 import { NextFunction, Request, Response } from "express";
-import ApiResponse from "../utils/ApiResponse";
+import ApiResponse from "../../utils/ApiResponse";
 
 import {
     getUserToken,
     isUserExists,
     registerUser,
     updateUser
-} from "../services/user/user.services";
-import User from "../models/user.model";
-import { userValidation } from "../utils/Validation";
+} from "../../services/users/users.services";
+import User from "../../models/user.model";
+import { userValidation } from "../../utils/validation/Validation";
 
 
 export const healthCheckup = async (req: Request, res: Response, next: NextFunction) => {

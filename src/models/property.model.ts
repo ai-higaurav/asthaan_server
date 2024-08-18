@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose'
 
-interface IProperty extends Document {
+export interface IProperty extends Document {
     listingType: 'sale' | 'rent';
     propertyType: 'apartment' | 'house' | 'villa';
     buildingType: 'residential' | 'commercial';
@@ -27,7 +27,7 @@ interface IProperty extends Document {
     locality: string;
     pinCode: number;
     phone: number;
-    seller: mongoose.Types.ObjectId;
+    sellerId: mongoose.Types.ObjectId;
   }
 
 const propertySchema: Schema<IProperty> = new mongoose.Schema({
@@ -144,7 +144,7 @@ const propertySchema: Schema<IProperty> = new mongoose.Schema({
         type: Number,
         required: true
     },
-    seller: {
+    sellerId: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true

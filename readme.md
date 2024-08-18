@@ -71,3 +71,102 @@ npm run start
 
 This command will start the server using the production build of your project or you can config your own pm2 manager.
 
+
+
+
+# Asthaan Server API Documentation
+
+## Register Property Endpoint
+
+
+### Overview
+This endpoint is used to register a new property in the system. It requires property details and seller information.
+
+### HTTP Method
+POST
+
+### Endpoint Path
+`/api/v1/properties/list`
+
+# Property Listing API Documentation
+
+## Overview
+This API allows for the creation and management of property listings, specifically for apartments. The listings can include various details such as property type, furnishing status, possession status, and amenities.
+
+## Endpoint
+
+### POST `/api/properties`
+Creates a new property listing.
+
+#### Request Body
+
+| Field Name         | Type      | Description                                               | Required | Example                         |
+|--------------------|-----------|-----------------------------------------------------------|----------|---------------------------------|
+| `listingType`       | `string`  | Type of listing. Options: `sale`, `rent`                  | Yes      | `"sale"`                        |
+| `propertyType`      | `string`  | Type of property. E.g., `apartment`, `villa`              | Yes      | `"apartment"`                   |
+| `buildingType`      | `string`  | Type of building. E.g., `residential`, `commercial`       | Yes      | `"residential"`                 |
+| `furnishedStatus`   | `string`  | Furnishing status. Options: `furnished`, `unfurnished`    | Yes      | `"furnished"`                   |
+| `possessionStatus`  | `string`  | Possession status. E.g., `ready to move`, `under construction` | Yes  | `"ready to move"`               |
+| `propertyAge`       | `number`  | Age of the property in years                              | Yes      | `5`                             |
+| `unitNo`            | `number`  | Unit number of the property                               | Yes      | `100`                           |
+| `rooms`             | `number`  | Number of rooms                                           | Yes      | `3`                             |
+| `bathroom`          | `number`  | Number of bathrooms                                       | Yes      | `2`                             |
+| `area`              | `number`  | Area of the property in square meters                     | Yes      | `100`                           |
+| `price`             | `number`  | Price of the property in the local currency               | Yes      | `5000000`                       |
+| `totalFloors`       | `number`  | Total number of floors in the building                    | Yes      | `10`                            |
+| `floorNo`           | `number`  | Floor number where the property is located                | Yes      | `5`                             |
+| `balconyType`       | `string`  | Type of balcony. E.g., `open`, `closed`                   | No       | `"open"`                        |
+| `amenities`         | `array`   | List of amenities available. E.g., `gym`, `swimming pool` | No       | `["gym", "swimming pool", "park"]` |
+| `waterSource`       | `string`  | Source of water supply. E.g., `municipal corporation`     | Yes      | `"municipal corporation"`       |
+| `facingDirection`   | `string`  | Direction the property is facing. E.g., `east`, `west`    | No       | `"east"`                        |
+| `additionalDetails` | `string`  | Any additional details about the property                 | No       | `"This is a sample property"`   |
+| `images`            | `array`   | Array of image URLs for the property                      | No       | `[]`                            |
+| `status`            | `string`  | Status of the listing. E.g., `active`, `inactive`         | Yes      | `"active"`                      |
+| `isVerified`        | `boolean` | Verification status of the property listing               | Yes      | `true`                          |
+| `state`             | `string`  | State where the property is located                       | Yes      | `"Uttar Pradesh"`               |
+| `city`              | `string`  | City where the property is located                        | Yes      | `"Mumbai"`                      |
+| `locality`          | `string`  | Locality within the city                                  | Yes      | `"Andheri West"`                |
+| `pinCode`           | `number`  | Postal code of the locality                               | Yes      | `400053`                        |
+| `phone`             | `number`  | Contact phone number for the listing                     | Yes      | `9876543210`                    |
+| `sellerId`          | `string`  | Unique identifier for the seller                         | Yes      | `"66c0793f609072365ca4c245"`    |
+
+#### Example Request
+```json
+{
+  "listingType": "sale",
+  "propertyType": "apartment",
+  "buildingType": "residential",
+  "furnishedStatus": "furnished",
+  "possessionStatus": "ready to move",
+  "propertyAge": 5,
+  "unitNo": 100,
+  "rooms": 3,
+  "bathroom": 2,
+  "area": 100,
+  "price": 5000000,
+  "totalFloors": 10,
+  "floorNo": 5,
+  "balconyType": "open",
+  "amenities": ["gym", "swimming pool", "park"],
+  "waterSource": "municipal corporation",
+  "facingDirection": "east",
+  "additionalDetails": "This is a sample property",
+  "images": [],
+  "status": "active",
+  "isVerified": true,
+  "state": "Uttar Pradesh",
+  "city": "Mumbai",
+  "locality": "Andheri West",
+  "pinCode": 400053,
+  "phone": 9876543210,
+  "sellerId": "66c0793f609072365ca4c245"
+}
+```
+#### Example Response
+```json
+{
+    "data": [],
+    "message": "Property has been listed successfully",
+    "statusCode": 200
+}
+

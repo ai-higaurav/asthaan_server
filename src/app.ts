@@ -14,7 +14,8 @@ app.use(cors({
 app.use(express.json())
 
 import userRoute from './routes/user.routes'
-import propertyRouter from './routes/property.route'
+import propertyRouter from './routes/property.routes'
+
 
 app.use('/api/v1/users/', userRoute)
 app.use('/api/v1/properties/', propertyRouter)

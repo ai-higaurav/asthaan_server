@@ -8,7 +8,7 @@ import {
     healthCheckup,
     handleWebhook,
     getToken
-} from "../controllers/users";
+} from "../controllers/users/users";
 
 // middleware
 import verifySignature from "../middleware/appwrite/verifySignature";
@@ -21,7 +21,8 @@ userRoute.get('/', (req: Request, res: Response) => {
 
 userRoute.route('/webhook').post(verifySignature, asyncHandler(handleWebhook))
 userRoute.route('/token').post(asyncHandler(getToken))
-
 userRoute.route('/test').get(asyncHandler(healthCheckup))
+
+
 
 export default userRoute;

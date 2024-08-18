@@ -6,6 +6,11 @@ export interface IUser extends Document{
     email:string
     password:string
     phone:string
+    limit:number
+    subscription:{
+        subscribedAt:Date
+        expiredAt:Date
+    }
     emailVerification:boolean
     phoneVerification:boolean
 }
@@ -31,6 +36,20 @@ const userSchema:Schema<IUser> = new mongoose.Schema({
     phone:{
         type:String,
         required:true,
+    },
+    limit:{
+        type:Number,
+        default:1
+    },
+    subscription:{
+        subscribedAt:{
+            type:Date,
+            default:Date.now
+        },
+        expiredAt:{
+            type:Date,
+            default:new Date(0)
+        }
     },
     emailVerification:{
         type:Boolean,
